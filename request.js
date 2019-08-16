@@ -1,16 +1,12 @@
-function getHexColor() {
+function refreshBackgroundColor() {
   fetch('https://api.noopschallenge.com/hexbot')
     .then(function(response) {
       return response.json();
     })
     .then(function(colorsObj) {
-      var hexCode = colorsObj["colors"][0]["value"]
-      changeBackgroundColor(hexCode);
+      var hexString = colorsObj["colors"][0]["value"]
+      document.body.style.background = hexString;
     });
 }
 
-function changeBackgroundColor(hexString) {
-  document.body.style.background = hexString;
-}
-
-getHexColor();
+refreshBackgroundColor();
