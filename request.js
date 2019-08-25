@@ -9,4 +9,9 @@ function refreshBackgroundColor() {
     });
 }
 
+function getPhotos() {
+  console.log('getting photos');
+}
+
+getPhotos();
 refreshBackgroundColor();

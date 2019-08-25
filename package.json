@@ -1,0 +1,23 @@
+{
+  "name": "fluffy-broccoli",
+  "version": "1.0.0",
+  "description": "A web-app experiment involving things.",
+  "main": "request.js",
+  "dependencies": {
+    "unsplash-js": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csr/fluffy-broccoli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csr/fluffy-broccoli/issues"
+  },
+  "homepage": "https://github.com/csr/fluffy-broccoli#readme"
+}
