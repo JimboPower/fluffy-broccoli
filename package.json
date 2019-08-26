@@ -4,6 +4,7 @@
   "description": "A web-app experiment involving things.",
   "main": "request.js",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "jquery": "^3.4.1",
     "node-fetch": "^2.6.0"
   },
@@ -13,8 +14,8 @@
     "watchify": "^3.11.1"
   },
   "scripts": {
-    "build": "browserify request.js -o bundle.js",
-    "watch": "watchify request.js -o bundle.js",
+    "build": "browserify request.js config.js -o bundle.js",
+    "watch": "watchify request.js config.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,10 +1,11 @@
 // require syntax
 const Unsplash = require('unsplash-js').default;
 const fetch = require("node-fetch");
+const { unsplashSecretKey, unsplashAppAccessKey, port } = require('./config');
 
 const unsplash = new Unsplash({
-  applicationId: "{APP_ACCESS_KEY}",
-  secret: "{APP_SECRET}"
+  applicationId: unsplashAppAccessKey,
+  secret: unsplashSecretKey
 });
 
 function refreshBackgroundColor() {
@@ -20,11 +21,12 @@ function refreshBackgroundColor() {
 
 function getPhotos() {
   console.log('getting photos');
+  unsplash.photos.listPhotos(2, 15, "latest")
+  .then(unsplash.toJson)
+  .then(json => {
+    console.log('aloha!');
+  });
 }
 
 getPhotos();
 refreshBackgroundColor();
-
-// testing env variables
-const port = process.env.PORT;
-console.log(`Your port is ${port}`);
