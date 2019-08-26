@@ -1,32 +1,25 @@
 // require syntax
 const Unsplash = require('unsplash-js').default;
 const fetch = require("node-fetch");
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 const { unsplashSecretKey, unsplashAppAccessKey, port } = require('./config');
 
-const unsplash = new Unsplash({
-  applicationId: unsplashAppAccessKey,
-  secret: unsplashSecretKey
-});
-
-function refreshBackgroundColor() {
-  fetch('https://api.noopschallenge.com/hexbot')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(colorsObj) {
-      var hexString = colorsObj["colors"][0]["value"]
-      document.body.style.background = hexString;
-    });
-}
-
 function getPhotos() {
+  const unsplash = new Unsplash({
+    applicationId: unsplashAppAccessKey,
+    secret: unsplashSecretKey
+  });
+
   console.log('getting photos');
+  console.log(process.env.NODE_ENV);
+  console.log(`Your unsplashAppAccessKey is ${process.env.UNSPLASH_APP_ACCESS_KEY}`);
   unsplash.photos.listPhotos(2, 15, "latest")
   .then(unsplash.toJson)
   .then(json => {
-    console.log('aloha!');
+    console.log(process.env);
+    console.log(json);
   });
 }
 
 getPhotos();
-refreshBackgroundColor();

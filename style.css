@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lexend+Deca');
 
+body {
+  background-color: #4b386f;
+}
+
 /* Add a black background color to the top navigation bar */
 .topnav {
   margin-top: 20px;
@@ -21,7 +25,7 @@
 
 /* Style the search box inside the navigation bar */
 .topnav input[type=text] {
-  padding: 13px;
+  padding: 14px;
   border: none;
   font-size: 17px;
   font-family: 'Lexend Deca';
@@ -29,6 +33,7 @@
   margin-left: 20px;
   overflow: hidden;
   flex-grow: 1;
+  outline: none;
 }
 
 /* TODO: make sure it looks great on mobile devices as well */
