@@ -1,3 +1,11 @@
+// require syntax
+const Unsplash = require('unsplash-js').default;
+
+const unsplash = new Unsplash({
+  applicationId: "{APP_ACCESS_KEY}",
+  secret: "{APP_SECRET}"
+});
+
 function refreshBackgroundColor() {
   fetch('https://api.noopschallenge.com/hexbot')
     .then(function(response) {
