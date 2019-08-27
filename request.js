@@ -21,5 +21,4 @@ function getPhotos() {
     console.log(json);
   });
 }
-
 getPhotos();
