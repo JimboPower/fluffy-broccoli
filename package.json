@@ -4,7 +4,6 @@
   "description": "A web-app experiment involving things.",
   "main": "request.js",
   "dependencies": {
-    "cors": "^2.8.5",
     "es6-promise": "^4.2.8",
     "isomorphic-fetch": "^2.2.1"
   },
