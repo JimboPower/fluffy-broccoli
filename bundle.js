@@ -4980,11 +4980,14 @@ const { unsplashSecretKey, unsplashAppAccessKey, port } = require('./config');
 function helloWorld() {
   fetch('https://us-central1-fluffy-broccoli-2b8cf.cloudfunctions.net/helloWorld')
   .then(function(response) {
+    console.log(response);
     return response.json();
   })
   .then(function(json) {
     console.log('json output:');
     console.log(json);
+  }).catch((error) => {
+    console.log(error);
   });
 }
 

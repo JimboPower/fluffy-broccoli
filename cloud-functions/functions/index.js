@@ -1,36 +1,31 @@
 const functions = require('firebase-functions');
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 // CORS Express middleware to enable CORS Requests.
 const cors = require('cors')({
   origin: true,
 });
 
-// Create and Deploy Your First Cloud Functions
-// https://firebase.google.com/docs/functions/write-firebase-functions
-
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  console.log('hello world function');
-  // Enable CORS using the `cors` express middleware.
-  return cors(request, response, () => {
-    response.status(200).send('hello cors!');
-  });
-});
-
 exports.getPhotos = functions.https.onRequest((request, response) => {
-  // const unsplash = new Unsplash({
-  //   applicationId: unsplashAppAccessKey,
-  //   secret: unsplashSecretKey
-  // });
-  //
-  // console.log('getting photos');
-  // console.log(process.env.NODE_ENV);
-  // console.log(`Your unsplashAppAccessKey is ${process.env.UNSPLASH_APP_ACCESS_KEY}`);
-  // unsplash.photos.listPhotos(2, 15, "latest")
-  // .then(unsplash.toJson)
-  // .then(json => {
-  //   console.log(process.env);
-  //   console.log(json);
-  // });
+  var query = request.query.query;
+  var accessKey = functions.config().unsplash.accesskey;
 
- response.send("Get photos!");
+  if (query === null) {
+    response.status(500).send('Error: Missing query parameter.');
+  }
+
+  if (accessKey === null) {
+    response.status(500).send('Error: Missing Unsplash Access Key');
+  }
+
+  var requestUrl = `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`;
+
+  fetch(requestUrl)
+  .then(response => response.json())
+  .then(data => {
+    response.send(data);
+    return
+  })
+  .catch(error => console.error(error));
 });
